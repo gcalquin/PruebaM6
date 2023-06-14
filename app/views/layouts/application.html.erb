@@ -12,9 +12,15 @@
 
   <body>
     <div class="row">
+    <div class="col-12">
+    <%= render "layouts/shared/navbar" %>
+    </div>
+  
       <div class="container">
-      <%= render "layouts/shared/navbar" %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
+      
         <%= yield %>
       </div>
     </div>
