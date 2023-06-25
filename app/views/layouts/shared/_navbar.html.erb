@@ -1,13 +1,25 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href=<%= root_path%>>Crazy4Cats</a>
+  <a class="navbar-brand" href=<%= root_path%>>System</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
   <% if user_signed_in? %>
+            
             <li class="nav-item active">
+            
         <%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <p style="text-align: left;">Bienvenido: <%= current_user.email %>!</p>
+        <p style="text-align: left;">Su perfil es: (<%= current_user.role %>)</p>
+      <%  if  current_user.role == "admin" %>
+        <li class="nav-item active">
+        <%= link_to "Crear usuarios ", new_user_registration_path, class: "nav-link" %>
+         <%= link_to "Crear trabajos ", new_job_path, class: "nav-link" %>
+      <%  end %>
+
       </li>
   <% else %>
       <li class="nav-item active">
@@ -20,3 +32,4 @@
     </ul>
   </div>
 </nav>
+
